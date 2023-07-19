@@ -8,18 +8,21 @@ import {
 } from 'react-native';
 import { TouchableOpacity,  } from 'react-native';
 import colors from '../assets/colors/colors';
-import Entypo from 'react-native-vector-icons/Entypo';
-import {useDispatch, useSelector} from 'react-redux';
-import { detailActions} from '../src/redux/actions/detailActions'
+
+import { collection, getDocs } from 'firebase/firestore/lite';
+import { db } from '../firebaseConfig';
 const height = Dimensions.get('window').height;
 // const dispatch = useDispatch();
 const Details = ({route, navigation}) => {
-const liked = useSelector((state) => state.detailReducer)
-console.log("Liked", liked);  
 const {item} = route.params;
-  // const [liked, setLiked] = useState (item.liked)
   const [likeColor, setLikeColor] = useState(colors.gray);
-  
+  const getDiscoveryData = async () => {
+    const discoveryData = collection(db, 'discoveryData');
+    const discoverSnapshot = await getDocs(discoveryData);
+    const discoveryList = discoverSnapshot.docs.map(doc => doc.data());
+    console.log(discoveryList);
+    
+  }
   return (
     <View style={styles.container}>
       <ImageBackground source={item.imageBig} style={styles.backgroundImage}>
@@ -39,20 +42,7 @@ const {item} = route.params;
       <View style={styles.descriptionWrapper}>
         <View style={styles.heartWrapper}>
           <TouchableOpacity
-          // onPress={()=> dispatch(detailActions(liked))
-
-          // // var newColor = likeColor === colors.gray  ? colors.orange : colors.gray;
-          // //   if (liked == false) {
-          // //     setLiked(true);
-          // //     setLikeColor(newColor);
-
-          // // } else {
-          // //   setLiked(false)
-          // //   setLikeColor(newColor);
-
-          // // }
-          // }
-          >
+          onPress={getDiscoveryData}>
           <Entypo name="heart" size={32} color={likeColor} />
           </TouchableOpacity>
         </View>
