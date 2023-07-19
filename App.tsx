@@ -9,9 +9,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Entypo from 'react-native-vector-icons/Entypo';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Provider } from 'react-redux';
-import { store } from './src/redux/reducers/index';
+import { store } from './src/redux/store';
 import LoginScreen from './components/LoginScreen';
 import RegisterScreen from './components/RegisterScreen';
 import {User, onAuthStateChanged} from 'firebase/auth'
@@ -78,7 +78,7 @@ const App = () => {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
         const uid = user.uid;
-        console.log('user', user)
+        // console.log('user', user)
         setUser(user);
       } else {
       }

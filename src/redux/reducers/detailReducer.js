@@ -1,8 +1,7 @@
 import { TYPES } from '../types.js';
 import discoverData from '../../../assets/data/discoverData.js';
 const initState = {
-    liked: false,
-    loading: false,
+
 }
 const detailReducer = (state = initState, payload) => {
     switch (payload.type) {

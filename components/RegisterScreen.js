@@ -50,6 +50,7 @@ const onpressSignup = async () =>{
         onChangeText={setPassword}
         value={password}
         placeholder="Password"
+        secureTextEntry={true}
       />
       
       <TouchableOpacity
@@ -72,7 +73,6 @@ const styles = StyleSheet.create({
         width: 300,
         borderWidth: 1,
         paddingHorizontal: 10,
-        marginVertical: 10,
         borderRadius: 10
     },
     logoImage: {

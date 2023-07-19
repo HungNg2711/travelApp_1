@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {View, Text, Button, Image, SafeAreaView, ScrollView, StyleSheet, ImageBackground} from 'react-native';
 
 import colors from '../assets/colors/colors';
@@ -12,7 +12,9 @@ import profile from '../assets/images/person.png';
 import logo from '../assets/images/LogoApp.png';
 
 import {FlatList, TouchableOpacity} from 'react-native';
+// console.log("discoverDataHome",discoverData);
 const Home = ({navigation}) => {
+  
   const renderDiscoverItem = ({item}) => {
     return (
       <TouchableOpacity
